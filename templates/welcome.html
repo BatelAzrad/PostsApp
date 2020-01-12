@@ -1,0 +1,16 @@
+<HTML>
+<BODY bgcolor="pink">
+<form  action="{{ url_for('login') }}" method="post">
+    <center>
+    <h1>Login</h1>
+        <label for="user"></label>
+        User <input type="text" name="user" placeholder="User" id="user" required>
+        <br>
+        <label for="password"></label>
+        Password <input type="password" name="password" placeholder="Password" id="password" required>
+        <div class="msg">{{ msg }}</div>
+        <input type="submit" value="Login">
+    </center>
+</form>
+</BODY>
+</HTML>
