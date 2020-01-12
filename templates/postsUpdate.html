@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}Update Post {% endblock %}
+
+{% block content %}
+<h2>Posts Detailes:</h2>
+
+<form action="{{ url_for('update') }}" method="POST">
+
+
+        <input type="hidden" name = "postToUpdate" value="{{postDetails.0}}">
+        Post Title: <input type = "text" name= "title" id="title" value="{{postDetails.2}}" required><br>
+        Post Content: <input type = "text" name= "content" id="content" value="{{postDetails.3}}" required><br>
+        Admin Content: <input type = "text" name= "adminContent" id="adminContent" value="{{postDetails.4}}"><br>
+        Tags: <input type = "text" name= "tags" id="tags" value="{{postDetails.5}}"><br>
+
+        <input type = "submit">
+        {{ updateRes }}
+
+        <br>
+</form>
+
+
+{% endblock %}
