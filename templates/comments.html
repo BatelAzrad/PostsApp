@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}Post ID : {{id}}{% endblock %}
+
+{% block content %}
+<h2>Post Comments</h2>
+
+
+<table>
+        <tr>
+                <th>Author</th>
+                <th>content</th>
+
+        </tr>
+
+{% for row in comments %}
+        <tr>
+                <td>{{row.1}}</td>
+                <td>{{row.2}}</td>
+
+        </tr>
+{% endfor  %}
+
+<form action="{{ url_for('comments')}}" method="post">
+
+<input type="hidden" name="postToComment" value="{{id}}">
+Comment: <input type="text" name="comment" id="comment"><br>
+<input type="submit">
+</form>
+
+
+{% endblock %}
