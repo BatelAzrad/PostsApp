@@ -8,8 +8,7 @@ db = yaml.load(open('config.yaml'))
 mydb = mysql.connector.connect(
     host = db['mysql']['host'],
     user = db['mysql']['user'],
-    password = db['mysql']['pass'],
-    database = 'mydev'
+    password = db['mysql']['pass']
 )
 
 mycursor = mydb.cursor()
@@ -17,6 +16,16 @@ mycursor = mydb.cursor()
 #Create database
 mycursor.execute("CREATE DATABASE IF NOT EXISTS mydev")
 mydb.commit()
+mycursor.close()
+
+#Connect to mydev database
+mycursor = mydb.cursor()
+mydb = mysql.connector.connect(
+    host = db['mysql']['host'],
+    user = db['mysql']['user'],
+    password = db['mysql']['pass'],
+    database = 'mydev'
+)
 
 #Create tables in database
 mycursor.execute("CREATE TABLE IF NOT EXISTS users ( user varchar(30) NOT NULL, password varchar(30) NOT NULL, type varchar(5) NOT NULL, PRIMARY KEY (user))")
