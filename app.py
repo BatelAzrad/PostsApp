@@ -234,6 +234,10 @@ def delete():
     #delete the post form 'posts' table
     curs.execute('DELETE FROM posts where id = %s', (postDel))
     mysql.connection.commit()
+    curs.execute('DELETE FROM comments where id = %s', (postDel))
+    mysql.connection.commit()
+    curs.execute('DELETE FROM likes where id = %s', (postDel))
+    mysql.connection.commit()
     return redirect(url_for('posts'))
 
 
