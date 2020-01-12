@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}Create Post {% endblock %}
+
+{% block content %}
+<h2>Posts Detailes:</h2>
+
+<form action="{{ url_for('create') }}" method="POST">
+
+        Post Title: <input type = "text" name= "title" id="title" required><br>
+        Post Content: <input type = "text" name= "content" id="content" required><br>
+        Admin Content: <input type = "text" name= "adminContent" id="adminContent"><br>
+        Tags: <input type = "text" name= "tags" id="tags"><br>
+
+        <input type = "submit">
+        {{ createRes }}
+
+        <br>
+</form>
+
+{% endblock %}
