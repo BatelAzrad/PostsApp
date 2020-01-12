@@ -12,5 +12,5 @@ python app.py
 
 ## AWS EC2 deployment for hands-on
 ```
-[Login Page](http://54.93.232.155:5000/)
 ```
+[Login Page](http://54.93.232.155:5000/)
