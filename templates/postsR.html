@@ -4,6 +4,7 @@
 {% block title %}Posts To Read{% endblock %}
 
 {% block content %}
+<link href="{{url_for('static', filename = 'postsDes.css')}}" rel="stylesheet">
 <h2>Posts Page</h2>
 
 <form action="{{ url_for('search') }}" method="POST">
@@ -17,16 +18,19 @@
         <br>
 </form>
 
-<table>
+<table class="blueTable">
+    <thead>
     <tr>
         <th>Post ID</th>
         <th>Author</th>
         <th>Title</th>
         <th>Content</th>
         <th>Tags</th>
-                <th>Likes</th>
+        <th>Likes</th>
+        <th>Comments</th>
     </tr>
-
+    </thead>
+    <tbody>
 {% for row in posts %}
     <tr>
         <td>{{row.0}}</td>
@@ -35,11 +39,12 @@
         <td>{{row.3}}</td>
         <td>{{row.5}}</td>
         <td>{{row.6}}</td>
-      <td><a href="{{ url_for('like', id=row.0) }}" method="POST">like/unlike</a></td>
-                <td><a href="{{ url_for('comments', id=row.0) }}" >Comments</a></td>
-
-
+        <td><a href="{{ url_for('like', id=row.0) }}" method="POST">like/unlike</a></td>
+        <td><a href="{{ url_for('comments', id=row.0) }}" >Comments</a></td>
     </tr>
-{% endfor  %}
 
+
+{% endfor  %}
+    </tbody>
+</table>
 {% endblock %}
