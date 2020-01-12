@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+<h2>Posts Page</h2>
+
+<form action="{{ url_for('search') }}" method="POST">
+
+        <h3>Search for post by ID</h3>
+        Post ID: <input type = "text" name= "search" id="post_id" required>
+                <br>
+        <input type = "submit">
+        {{ searchRes }}
+
+        <br>
+</form>
+
+<a href="{{ url_for('create') }}">Create New Post</a>
+
+
+<table>
+        <tr>
+                <th>Post ID</th>
+                <th>Author</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Admin content</th>
+                <th>Tags</th>
+                                <th>likes</th>
+                <th></th>
+
+        </tr>
+
+{% for row in posts %}
+        <tr>
+                <td>{{row.0}}</td>
+                <td>{{row.1}}</td>
+                <td>{{row.2}}</td>
+                <td>{{row.3}}</td>
+                <td>{{row.4}}</td>
+                <td>{{row.5}}</td>
+                <td>{{row.6}}</td>
+                <td> <a href="{{ url_for('delete', id=row.0) }}" method="POST">Delete Post</a></td>
+                <td><a href="{{ url_for('update', id=row.0) }}">Update Post</a></td>
+                <td><a href="{{ url_for('like', id=row.0) }}" method="POST">like/unlike</a></td>
+                <td><a href="{{ url_for('comments', id=row.0) }}" >Comments</a></td>
+
+
+        </tr>
+{% endfor  %}
+
+{% endblock %}
