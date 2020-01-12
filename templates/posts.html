@@ -4,6 +4,8 @@
 {% block title %}Posts{% endblock %}
 
 {% block content %}
+<link href="{{url_for('static', filename = 'postsDes.css')}}" rel="stylesheet">
+
 <h2>Posts Page</h2>
 
 <form action="{{ url_for('search') }}" method="POST">
@@ -20,19 +22,22 @@
 <a href="{{ url_for('create') }}">Create New Post</a>
 
 
-<table>
-        <tr>
+<table class="blueTable">
+        <thead><tr>
                 <th>Post ID</th>
                 <th>Author</th>
                 <th>Title</th>
                 <th>Content</th>
                 <th>Admin content</th>
                 <th>Tags</th>
-                                <th>likes</th>
-                <th></th>
+                <th>likes</th>
+                <th>Delete post</th>
+                <th>Update post</th>
+                <th>Like/Unlike post</th>
+                <th>Comments</th>
 
-        </tr>
-
+        </tr></thead>
+<tbody>
 {% for row in posts %}
         <tr>
                 <td>{{row.0}}</td>
@@ -50,5 +55,6 @@
 
         </tr>
 {% endfor  %}
-
+</tbody>
+</table>
 {% endblock %}
